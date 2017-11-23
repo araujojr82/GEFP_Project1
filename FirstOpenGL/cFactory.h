@@ -1,0 +1,40 @@
+#ifndef _cFactory_HG_
+#define _cFactory_HG_
+
+// "Abstract Factory" design pattern
+#include "iGameObject.h"
+// Interface class for the "mediator"
+#include "iMediator.h" 
+
+#include <string>
+#include <vector>
+
+class cFactory : public iMediator
+{
+public:
+	// Note: the parameter is a GENERAL TYPE
+	// Suggestion: DON'T use an enum
+	// String, int, whatever, as long as it's general
+	// Returns the interface class type (NOT specific types)
+	// (Factory method)
+	iGameObject* CreateObject( std::string objType );
+	//	std::string GetLastError(void);
+
+	// Builder pattern
+	void AssembleObject( iGameObject* pTheObject, std::string objType );
+
+	// These are "Mediator" sort of methods
+	// Seen by the main, iShip, etc.
+	virtual iGameObject* FindObjByID( unsigned int uniqueID );
+	virtual iGameObject* FindObjByName( std::string name );
+
+	void UpdateAllObjects( double timestep );
+
+private:
+	// To make this a mediator, it needs to 'know' about 
+	//	all the objects, so this will keep pointers to them around
+	std::vector< iGameObject* > vec_pObjects;
+
+};
+
+#endif

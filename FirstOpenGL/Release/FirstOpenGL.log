@@ -1,0 +1,22 @@
+﻿  cGameObject.cpp
+  cLightManager.cpp
+  cMesh.cpp
+  cShader.cpp
+  cShaderManager.cpp
+  cTriangle.cpp
+  cVertex_xyz_rgb.cpp
+  ModelUtilities.cpp
+ModelUtilities.cpp(53): warning C4101: 'intensity': unreferenced local variable
+ModelUtilities.cpp(53): warning C4101: 'confidence': unreferenced local variable
+  cVAOMeshManager.cpp
+  Physics.cpp
+  TheMain.cpp
+TheMain.cpp(663): warning C4244: 'initializing': conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
+  Utilities.cpp
+  glad.c
+  Generating code
+c:\users\arauj\documents\fanshawe\myprojects\graphics_project1\firstopengl\cvaomeshmanager.cpp(195): warning C4715: 'cVAOMeshManager::lookupVAOFromName': not all control paths return a value
+  All 1092 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  FirstOpenGL.vcxproj -> C:\Users\arauj\Documents\Fanshawe\MyProjects\Graphics_Project1\Release\FirstOpenGL.exe
+  FirstOpenGL.vcxproj -> C:\Users\arauj\Documents\Fanshawe\MyProjects\Graphics_Project1\Release\FirstOpenGL.pdb (Full PDB)
