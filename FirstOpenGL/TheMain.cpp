@@ -85,7 +85,7 @@ struct sMeshparameters		// for the Meshes' input file
 };
 
 // Forward declare the Functions
-void loadObjectsUsingFactory();
+extern void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vecObjects);
 void loadConfigFile( std::string fileName, sWindowConfig& wConfig );
 sGOparameters parseObjLine( std::ifstream &source );
 void loadObjectsFile( std::string fileName );
@@ -304,7 +304,7 @@ int main( void )
 	//loadObjectsFile( "objects.txt" );
 	
 	::g_pFactory = new cFactory();
-	loadObjectsUsingFactory();
+	loadObjectsUsingFactory(g_pFactory, g_vecObjects);
 
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 2 );
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 0 );
@@ -679,22 +679,6 @@ float generateRandomNumber( float min, float max )
 	randomNumber = distribution( generator );
 	return randomNumber;
 
-}
-
-void loadObjectsUsingFactory()
-{
-	iGameObject* pSpaceShip = ::g_pFactory->CreateObject( "fighter" );		// MIG
-	pSpaceShip->setName( "PlayerShip" );
-	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.1f ) );
-	::g_vecObjects.push_back( pSpaceShip );
-
-	for( int index = 0; index != 1; index++ )
-	{
-		iGameObject* pBS = ::g_pFactory->CreateObject( "cell" );
-		// teapot
-		pBS->setName("cell" + std::to_string(index));
-		::g_vecObjects.push_back( pBS );
-	}
 }
 
 //Load objects.txt
