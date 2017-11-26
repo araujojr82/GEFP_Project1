@@ -75,6 +75,9 @@
     <ClCompile Include="cLaserGun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cVirus.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cMesh.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="cLaserGun.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cVirus.h">
+      <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

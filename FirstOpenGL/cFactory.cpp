@@ -1,16 +1,12 @@
 #include "cFactory.h"
-// Include the SPECIFIC header here NEVER in the header of factory
 #include "cShip.h"	
 #include "cCell.h"
+#include "cVirus.h"
 
-
-// Why here? Because this file is where "new" is being called
 #include "cGameObject.h"
 #include <vector>
 #include <glm/glm.hpp>
 
-// I'll need to get at g_vecGameObjects, 
-//	but I can just extern it...
 extern std::vector< cGameObject* >  g_vecGameObjects;
 
 // A "factory" method
@@ -18,17 +14,14 @@ iGameObject* cFactory::CreateObject( std::string objType )
 {
 	iGameObject* pTheObject = NULL;	// or 0, or nullptr
 
-	if( objType == "basic" )
-	{
-		pTheObject = new cShip();		// Abstract Factory
-		this->AssembleObject( pTheObject, objType );
-	}
-	else if( objType == "fighter" )
+	//if( objType == "basic" )
+	//{
+	//	pTheObject = new cShip();		// Abstract Factory
+	//	this->AssembleObject( pTheObject, objType );
+	//}
+	if( objType == "fighter" )
 	{
 		pTheObject = new cShip();
-		// ***********************************************
-		// Here we add the game object association
-		// (This would be a good case for making a G.O. Factory thing
 		cGameObject* pTempGO = new cGameObject();
 		pTempGO->scale = 2.0f;
 		pTempGO->diffuseColour = glm::vec4( 0.5f, 0.5f, 0.5f, 1.0f );
@@ -36,18 +29,14 @@ iGameObject* cFactory::CreateObject( std::string objType )
 		pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
 		pTempGO->bIsUpdatedInPhysics = true;
 		//pTempGO->bIsWireFrame = true;
-		::g_vecGameObjects.push_back( pTempGO );		// Fastest way to add
-														// ***********************************************
-		cShip* pS = ( cShip* )pTheObject;		//iShip* pTheShip
+		::g_vecGameObjects.push_back( pTempGO );
+		cShip* pS = ( cShip* )pTheObject;
 		pS->pMesh = pTempGO;
 		this->AssembleObject( pTheObject, objType );
 	}
     else if (objType == "fighter2")
     {
         pTheObject = new cShip();
-        // ***********************************************
-        // Here we add the game object association
-        // (This would be a good case for making a G.O. Factory thing
         cGameObject* pTempGO = new cGameObject();
         pTempGO->scale = 2.0f;
         pTempGO->diffuseColour = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
@@ -58,18 +47,14 @@ iGameObject* cFactory::CreateObject( std::string objType )
         pTempGO->position.y = 0.0f;
         pTempGO->position.z = 2.0f;
         //pTempGO->bIsWireFrame = true;
-        ::g_vecGameObjects.push_back(pTempGO);		// Fastest way to add
-                                                    // ***********************************************
-        cShip* pS = (cShip*)pTheObject;		//iShip* pTheShip
+        ::g_vecGameObjects.push_back(pTempGO);
+        cShip* pS = (cShip*)pTheObject;
         pS->pMesh = pTempGO;
         this->AssembleObject(pTheObject, objType);
     }
 	else if( objType == "cell" )
 	{
 		pTheObject = new cCell();
-		// ***********************************************
-		// Here we add the game object association
-		// (This would be a good case for making a G.O. Factory thing
 		cGameObject* pTempGO = new cGameObject();
 		pTempGO->scale = 1.0f;
 		pTempGO->diffuseColour = glm::vec4( 1.0f, 0.0f, 0.0f, 1.0f );
@@ -78,12 +63,25 @@ iGameObject* cFactory::CreateObject( std::string objType )
 		pTempGO->bIsUpdatedInPhysics = true;
 		//pTempGO->bIsWireFrame = true;
 
-		::g_vecGameObjects.push_back( pTempGO );		// Fastest way to add
-														// ***********************************************
-		cCell* pS = ( cCell* )pTheObject;		//iShip* pTheShip
+		::g_vecGameObjects.push_back( pTempGO );
+		cCell* pS = ( cCell* )pTheObject;
 		pS->pMesh = pTempGO;
-		//		((cShip*)(pTheShip))->pMesh = pTempGO;
-		// ***********************************************
+		this->AssembleObject( pTheObject, objType );
+	}
+	else if( objType == "virus" )
+	{
+		pTheObject = new cVirus();
+		cGameObject* pTempGO = new cGameObject();
+		pTempGO->scale = 1.0f;
+		pTempGO->diffuseColour = glm::vec4( 0.0f, 1.0f, 0.0f, 1.0f );
+		pTempGO->meshName = "virus";
+		pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
+		pTempGO->bIsUpdatedInPhysics = true;
+		//pTempGO->bIsWireFrame = true;
+
+		::g_vecGameObjects.push_back( pTempGO );
+		cVirus* pS = ( cVirus* )pTheObject;
+		pS->pMesh = pTempGO;
 		this->AssembleObject( pTheObject, objType );
 	}
 

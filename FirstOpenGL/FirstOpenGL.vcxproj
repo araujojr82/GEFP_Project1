@@ -162,6 +162,7 @@
     <ClCompile Include="cShip.cpp" />
     <ClCompile Include="cTriangle.cpp" />
     <ClCompile Include="cVertex_xyz_rgb.cpp" />
+    <ClCompile Include="cVirus.cpp" />
     <ClCompile Include="ModelUtilities.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -184,6 +185,7 @@
     <ClInclude Include="cTriangle.h" />
     <ClInclude Include="cVAOMeshManager.h" />
     <ClInclude Include="cVertex_xyz_rgb.h" />
+    <ClInclude Include="cVirus.h" />
     <ClInclude Include="iGameObject.h" />
     <ClInclude Include="iMediator.h" />
     <ClInclude Include="ModelUtilities.h" />

@@ -20,7 +20,6 @@ void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vec
 	for( int index = 0; index != 20; index++ )
 	{
         iGameObject* pCell = pFactory->CreateObject("cell");
-        // teapot
 		pCell->setName("cell" + std::to_string(index));
 		pCell->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
 									   generateRandomNumber( -6.0f, 6.0f ), //y
@@ -31,4 +30,18 @@ void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vec
 									   generateRandomNumber( -0.02f, 0.02f ) ) );
         vecObjects.push_back( pCell );
     }
+
+	for( int index = 0; index != 5; index++ )
+	{
+		iGameObject* pVirus = pFactory->CreateObject( "virus" );
+		pVirus->setName( "virus" + std::to_string( index ) );
+		pVirus->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
+			generateRandomNumber( -6.0f, 6.0f ), //y
+			0.0f ) );				             //z
+
+		pVirus->SetRotation( glm::vec3( generateRandomNumber( -0.02f, 0.02f ),
+			generateRandomNumber( -0.02f, 0.02f ),
+			generateRandomNumber( -0.02f, 0.02f ) ) );
+		vecObjects.push_back( pVirus );
+	}
 }
