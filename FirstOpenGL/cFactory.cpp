@@ -35,9 +35,6 @@ iGameObject* cFactory::CreateObject( std::string objType )
 		pTempGO->meshName = "fighter";
 		pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
 		pTempGO->bIsUpdatedInPhysics = true;
-		pTempGO->position.x = 0.0f;
-		pTempGO->position.y = 0.0f;
-		pTempGO->position.z = 0.0f;
 		//pTempGO->bIsWireFrame = true;
 		::g_vecGameObjects.push_back( pTempGO );		// Fastest way to add
 														// ***********************************************
@@ -58,9 +55,6 @@ iGameObject* cFactory::CreateObject( std::string objType )
 		pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
 		pTempGO->bIsUpdatedInPhysics = true;
 		//pTempGO->bIsWireFrame = true;
-		//pTempGO->position.x = 3.0f;
-		//pTempGO->position.y	= 3.0f;
-		//pTempGO->position.z	= 0.0f;
 
 		::g_vecGameObjects.push_back( pTempGO );		// Fastest way to add
 														// ***********************************************
@@ -85,13 +79,13 @@ iGameObject* cFactory::CreateObject( std::string objType )
 // "builder" design pattern
 void cFactory::AssembleObject( iGameObject* pTheObject, std::string objType )
 {
-	if( objType == "basic" )
+	if( objType == "fighter" )
 	{	// Assemble or build the specifics of that object
-		// It's got one LAZER 
+		// It's got one Laser Gun
 		// ( (cShip*)pTheShip )->pMyLASER...
 
 		cShip* pShip = ( cShip* )pTheObject;	// not iShip
-		//pShip->pMyLASER = new cLASERgun();
+		pShip->pMyLaser = new cLaserGun();
 	}
 	return;
 }

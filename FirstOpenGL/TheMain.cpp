@@ -685,7 +685,8 @@ void loadObjectsUsingFactory()
 {
 	iGameObject* pSpaceShip = ::g_pFactory->CreateObject( "fighter" );		// MIG
 	pSpaceShip->setName( "PlayerShip" );
-	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.1f ) );
+	pSpaceShip->SetPosition( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.0f ) );
 	pSpaceShip->SetRotation( glm::vec3( 0.0f, 0.0f, 0.0f ) );
 	::g_vecObjects.push_back( pSpaceShip );
 

@@ -22,14 +22,14 @@ cShip::~cShip()
 //		<< std::endl;
 //	return;
 //}
-//
-//void cShip::ShootWeapons( void )
-//{
-//	std::cout << "cShip shoots:";
-//	this->pMyLASER->Shoot();
-//	return;
-//}
-//
+
+void cShip::ShootWeapons( void )
+{
+	std::cout << "cShip shoots:";
+	this->pMyLaser->Shoot();
+	return;
+}
+
 void cShip::SetPosition( glm::vec3 newPos )
 {
 	this->pMesh->position = newPos;
