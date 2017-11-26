@@ -10,6 +10,7 @@
 #include <glm/glm.hpp>
 
 #include "iMediator.h"
+#include "cGameObject.h"
 
 class iGameObject
 {
@@ -24,6 +25,7 @@ public:
 
 	virtual void SetPosition( glm::vec3 newPos ) = 0;
 	virtual void SetVelocity( glm::vec3 newVel ) = 0;
+	virtual void SetRotation( glm::vec3 newRot ) = 0;
 	////virtual glm::vec3 GetPosition(glm::vec3 newPos) = 0;
 	////virtual glm::vec3 GetVelocity(glm::vec3 newPos) = 0;
 	virtual std::string getName( void ) = 0;

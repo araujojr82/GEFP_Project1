@@ -1,5 +1,3 @@
-﻿  cFactory.cpp
-  TheMain.cpp
-c:\users\arauj\documents\fanshawe\game engine\gefp_project1\firstopengl\themain.cpp(672): warning C4244: 'initializing': conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
-  Generating Code...
-  FirstOpenGL.vcxproj -> C:\Users\arauj\Documents\Fanshawe\Game Engine\GEFP_Project1\Debug\FirstOpenGL.exe
+﻿  TheMain.cpp
+c:\users\arauj\documents\fanshawe\myprojects\gefp_project1\firstopengl\themain.cpp(672): warning C4244: 'initializing': conversion from 'std::chrono::system_clock::rep' to 'unsigned int', possible loss of data
+  FirstOpenGL.vcxproj -> C:\Users\arauj\Documents\Fanshawe\MyProjects\GEFP_Project1\Debug\FirstOpenGL.exe

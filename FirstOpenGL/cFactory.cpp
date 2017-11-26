@@ -58,9 +58,9 @@ iGameObject* cFactory::CreateObject( std::string objType )
 		pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
 		pTempGO->bIsUpdatedInPhysics = true;
 		//pTempGO->bIsWireFrame = true;
-		pTempGO->position.x = 3.0f;
-		pTempGO->position.y	= 0.0f;
-		pTempGO->position.z	= 0.0f;
+		//pTempGO->position.x = 3.0f;
+		//pTempGO->position.y	= 3.0f;
+		//pTempGO->position.z	= 0.0f;
 
 		::g_vecGameObjects.push_back( pTempGO );		// Fastest way to add
 														// ***********************************************

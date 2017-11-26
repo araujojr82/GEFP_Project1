@@ -19,6 +19,7 @@ public:
 
 	virtual void SetPosition( glm::vec3 newPos );
 	virtual void SetVelocity( glm::vec3 newVel );
+	virtual void SetRotation( glm::vec3 newRot );
 
 	virtual std::string getName( void );
 	virtual void setName( std::string newName );
