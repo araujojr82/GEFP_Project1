@@ -1,10 +1,14 @@
 #include "cFactory.h"
 
+extern float generateRandomNumber( float min, float max );
+
 void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vecObjects)
 {
     iGameObject* pSpaceShip = pFactory->CreateObject("fighter");    
     pSpaceShip->setName("PlayerShip");
-    pSpaceShip->SetVelocity(glm::vec3(0.0f, 0.0f, 0.1f));
+	pSpaceShip->SetPosition( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	pSpaceShip->SetRotation( glm::vec3( 0.0f, 0.0f, 0.0f ) );
     vecObjects.push_back(pSpaceShip);
     
     // These lines create a new object just by recompiling this object. Uncoment to test!
@@ -13,11 +17,18 @@ void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vec
     //pSpaceShip->SetVelocity(glm::vec3(0.0f, 0.0f, 0.1f));
     //vecObjects.push_back(pSpaceShip2);
 
-    for (int index = 0; index != 1; index++)
-    {
-        iGameObject* pBS = pFactory->CreateObject("cell");
+	for( int index = 0; index != 20; index++ )
+	{
+        iGameObject* pCell = pFactory->CreateObject("cell");
         // teapot
-        pBS->setName("cell" + std::to_string(index));
-        vecObjects.push_back(pBS);
+		pCell->setName("cell" + std::to_string(index));
+		pCell->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
+									   generateRandomNumber( -6.0f, 6.0f ), //y
+									   0.0f ) );				             //z
+
+		pCell->SetRotation( glm::vec3( generateRandomNumber( -0.02f, 0.02f ),
+									   generateRandomNumber( -0.02f, 0.02f ),
+									   generateRandomNumber( -0.02f, 0.02f ) ) );
+        vecObjects.push_back( pCell );
     }
 }

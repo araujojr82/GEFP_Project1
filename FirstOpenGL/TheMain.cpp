@@ -681,32 +681,6 @@ float generateRandomNumber( float min, float max )
 
 }
 
-void loadObjectsUsingFactory()
-{
-	iGameObject* pSpaceShip = ::g_pFactory->CreateObject( "fighter" );		// MIG
-	pSpaceShip->setName( "PlayerShip" );
-	pSpaceShip->SetPosition( glm::vec3( 0.0f, 0.0f, 0.0f ) );
-	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.0f ) );
-	pSpaceShip->SetRotation( glm::vec3( 0.0f, 0.0f, 0.0f ) );
-	::g_vecObjects.push_back( pSpaceShip );
-
-	for( int index = 0; index != 20; index++ )
-	{
-		iGameObject* pCell = ::g_pFactory->CreateObject( "cell" );
-		// teapot
-		pCell->setName("cell" + std::to_string(index));
-		pCell->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
-									   generateRandomNumber( -6.0f, 6.0f ), //y
-									   0.0f ) );				             //z
-
-		pCell->SetRotation( glm::vec3( generateRandomNumber( -0.02f, 0.02f ),
-									   generateRandomNumber( -0.02f, 0.02f ),
-									   generateRandomNumber( -0.02f, 0.02f ) ) );
-
-		::g_vecObjects.push_back( pCell );
-	}
-}
-
 //Load objects.txt
 void loadObjectsFile( std::string fileName )
 {
