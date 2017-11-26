@@ -27,6 +27,7 @@ public:
 	// Seen by the main, iShip, etc.
 	virtual iGameObject* FindObjByID( unsigned int uniqueID );
 	virtual iGameObject* FindObjByName( std::string name );
+	virtual iGameObject* FindClosestObjByType( std::string objType, glm::vec3 fromPos );
 
 	void UpdateAllObjects( double timestep );
 

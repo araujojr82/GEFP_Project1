@@ -51,6 +51,11 @@ void cShip::SetRotation( glm::vec3 newRot )
 	return;
 }
 
+glm::vec3 cShip::GetPosition( void )
+{
+	return this->pMesh->position;
+}
+
 std::string cShip::getName( void )
 {
 	return this->name;
@@ -67,4 +72,9 @@ void cShip::SetMediator( iMediator* pMediator )
 {
 	this->m_pTheMediator = pMediator;
 	return;
+}
+
+void cShip::moveTo( glm::vec3 targetPosition )
+{
+
 }

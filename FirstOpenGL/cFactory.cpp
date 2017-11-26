@@ -124,6 +124,11 @@ void cFactory::UpdateAllObjects( double timestep )
 	{
 		iGameObject* pCurObj = this->vec_pObjects[index];
 
+		if( strncmp( pCurObj->getName().c_str(), "virus", 5 ) == 0 )
+		{ // It's a virus!
+			pCurObj->moveTo( FindClosestObjByType( "cell", pCurObj->GetPosition() )->GetPosition() );
+		}
+
 		// For "fly around" (or anything tied with the physics),
 		//	you might want to use the physics updater
 		//pCurObj->FlyAround();
@@ -153,4 +158,29 @@ iGameObject* cFactory::FindObjByName( std::string name )
 		}
 	}
 	return NULL;
+}
+
+iGameObject* cFactory::FindClosestObjByType( std::string objType, glm::vec3 fromPos )
+{
+	float distance = 1000.0f;
+	float tempDist = 0.0f;
+	iGameObject* nearestObj;
+	glm::vec3 targetPos;
+
+	for( int index = 0; index != this->vec_pObjects.size(); index++ )
+	{
+		iGameObject* pCurrentObj = this->vec_pObjects[index];
+		if( strncmp( pCurrentObj->getName().c_str(), objType.c_str(), 4 ) == 0 )
+		{	// Only compare distance to objects of target type
+
+			targetPos = pCurrentObj->GetPosition();
+			tempDist = sqrt( pow( targetPos.x - fromPos.x, 2 ) + pow( targetPos.y - fromPos.y, 2 ) );
+			if( tempDist <= distance )
+			{
+				distance = tempDist;
+				nearestObj = pCurrentObj;
+			}
+		}
+	}
+	return nearestObj;
 }

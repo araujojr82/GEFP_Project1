@@ -601,6 +601,9 @@ int main( void )
 		// Now many seconds that have elapsed since we last checked
 		double curTime = glfwGetTime();
 		double deltaTime = curTime - lastTimeStep;
+
+		// Use mediator to update all ships
+		::g_pFactory->UpdateAllObjects( deltaTime );
 		
 		// Physics Calculation
 		PhysicsStep( deltaTime );
@@ -900,10 +903,10 @@ void PhysicsStep( double deltaTime )
 			continue;		// Skip everything else in the for
 		}
 
-		//// Explicity Euler integration (RK4)
-		//// New position is based on velocity over time
-		//glm::vec3 deltaPosition = ( float )deltaTime * pCurGO->vel;
-		//pCurGO->position += deltaPosition;
+		// Explicity Euler integration (RK4)
+		// New position is based on velocity over time
+		glm::vec3 deltaPosition = ( float )deltaTime * pCurGO->vel;
+		pCurGO->position += deltaPosition;
 
 		//// New velocity is based on acceleration over time
 		//glm::vec3 deltaVelocity = ( ( float )deltaTime * pCurGO->accel )

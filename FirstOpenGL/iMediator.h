@@ -16,6 +16,7 @@ public:
 	// Seen by the main, iShip, etc.
 	virtual iGameObject* FindObjByID( unsigned int uniqueID ) = 0;
 	virtual iGameObject* FindObjByName( std::string name ) = 0;
+	virtual iGameObject* FindClosestObjByType( std::string objType, glm::vec3 fromPos ) = 0;
 
 };
 

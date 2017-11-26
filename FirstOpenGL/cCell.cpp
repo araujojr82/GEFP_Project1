@@ -50,6 +50,11 @@ void cCell::SetRotation( glm::vec3 newRot )
 	return;
 }
 
+glm::vec3 cCell::GetPosition( void )
+{
+	return this->pMesh->position;
+}
+
 std::string cCell::getName( void )
 {
 	return this->name;
@@ -66,4 +71,9 @@ void cCell::SetMediator( iMediator* pMediator )
 {
 	this->m_pTheMediator = pMediator;
 	return;
+}
+
+void cCell::moveTo( glm::vec3 targetPosition )
+{
+
 }

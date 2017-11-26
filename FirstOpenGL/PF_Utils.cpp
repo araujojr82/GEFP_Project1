@@ -17,13 +17,15 @@ void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vec
     //pSpaceShip->SetVelocity(glm::vec3(0.0f, 0.0f, 0.1f));
     //vecObjects.push_back(pSpaceShip2);
 
-	for( int index = 0; index != 20; index++ )
+	for( int index = 0; index != 10; index++ )
 	{
         iGameObject* pCell = pFactory->CreateObject("cell");
 		pCell->setName("cell" + std::to_string(index));
 		pCell->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
 									   generateRandomNumber( -6.0f, 6.0f ), //y
 									   0.0f ) );				             //z
+
+		//pCell->SetPosition( glm::vec3( 5.0f, 0.0f, 0.0f ) );
 
 		pCell->SetRotation( glm::vec3( generateRandomNumber( -0.02f, 0.02f ),
 									   generateRandomNumber( -0.02f, 0.02f ),
@@ -36,8 +38,10 @@ void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vec
 		iGameObject* pVirus = pFactory->CreateObject( "virus" );
 		pVirus->setName( "virus" + std::to_string( index ) );
 		pVirus->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
-			generateRandomNumber( -6.0f, 6.0f ), //y
-			0.0f ) );				             //z
+										generateRandomNumber( -6.0f, 6.0f ), //y
+										0.0f ) );				             //z
+		
+		//pVirus->SetPosition( glm::vec3( 0.0f, 5.0f, 0.0f ) );
 
 		pVirus->SetRotation( glm::vec3( generateRandomNumber( -0.02f, 0.02f ),
 			generateRandomNumber( -0.02f, 0.02f ),
