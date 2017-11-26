@@ -2,7 +2,7 @@
 #define _cShip_HG_
 
 #include "iGameObject.h"
-//#include "cLASERgun.h"
+#include "cLaserGun.h"
 
 class cGameObject;	// forward declare
 
@@ -16,10 +16,11 @@ public:
 	float fuel;
 
 	//virtual void FlyAround( void );
-	//virtual void ShootWeapons( void );
+	virtual void ShootWeapons( void );
 
 	virtual void SetPosition( glm::vec3 newPos );
 	virtual void SetVelocity( glm::vec3 newVel );
+	virtual void SetRotation( glm::vec3 newRot );
 
 	virtual std::string getName( void );
 	virtual void setName( std::string newName );
@@ -27,7 +28,7 @@ public:
 	// NOTE: I'm passing iMediator NOT the full factory
 	virtual void SetMediator( iMediator* pMediator );
 
-	//cLASERgun* pMyLASER;
+	cLaserGun* pMyLaser;
 
 	cGameObject* pMesh;
 

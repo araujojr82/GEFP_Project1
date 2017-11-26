@@ -72,6 +72,9 @@
     <ClCompile Include="PF_Utils.cpp">
       <Filter>PatternsFrameworkCode</Filter>
     </ClCompile>
+    <ClCompile Include="cLaserGun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cMesh.h">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="iGameObject.h">
       <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="cLaserGun.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

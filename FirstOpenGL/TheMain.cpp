@@ -495,13 +495,13 @@ int main( void )
 				glm::vec3( 0.0f, 0.0f, 1.0f ) );
 			m = m * matPostRotZ;
 
-			//// IF the game object isn't a light object, it will rotate as normal
-			//if ( !::g_vecGameObjects[index]->bIsLight )
-			//{
-			//	::g_vecGameObjects[index]->orientation2.x += ::g_vecGameObjects[index]->rotation.x;
-			//	::g_vecGameObjects[index]->orientation2.y += ::g_vecGameObjects[index]->rotation.y;
-			//	::g_vecGameObjects[index]->orientation2.z += ::g_vecGameObjects[index]->rotation.z;
-			//}
+			// IF the game object isn't a light object, it will rotate as normal
+			if ( !::g_vecGameObjects[index]->bIsLight )
+			{
+				::g_vecGameObjects[index]->orientation2.x += ::g_vecGameObjects[index]->rotation.x;
+				::g_vecGameObjects[index]->orientation2.y += ::g_vecGameObjects[index]->rotation.y;
+				::g_vecGameObjects[index]->orientation2.z += ::g_vecGameObjects[index]->rotation.z;
+			}
 
 			glm::mat4 matPostRotY = glm::mat4x4( 1.0f );
 			matPostRotY = glm::rotate( matPostRotY, ::g_vecGameObjects[index]->orientation2.y,
@@ -679,6 +679,32 @@ float generateRandomNumber( float min, float max )
 	randomNumber = distribution( generator );
 	return randomNumber;
 
+}
+
+void loadObjectsUsingFactory()
+{
+	iGameObject* pSpaceShip = ::g_pFactory->CreateObject( "fighter" );		// MIG
+	pSpaceShip->setName( "PlayerShip" );
+	pSpaceShip->SetPosition( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	pSpaceShip->SetRotation( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	::g_vecObjects.push_back( pSpaceShip );
+
+	for( int index = 0; index != 20; index++ )
+	{
+		iGameObject* pCell = ::g_pFactory->CreateObject( "cell" );
+		// teapot
+		pCell->setName("cell" + std::to_string(index));
+		pCell->SetPosition( glm::vec3( generateRandomNumber( -11.0f, 11.0f ), //x
+									   generateRandomNumber( -6.0f, 6.0f ), //y
+									   0.0f ) );				             //z
+
+		pCell->SetRotation( glm::vec3( generateRandomNumber( -0.02f, 0.02f ),
+									   generateRandomNumber( -0.02f, 0.02f ),
+									   generateRandomNumber( -0.02f, 0.02f ) ) );
+
+		::g_vecObjects.push_back( pCell );
+	}
 }
 
 //Load objects.txt

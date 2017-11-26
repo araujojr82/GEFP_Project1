@@ -22,23 +22,32 @@ cShip::~cShip()
 //		<< std::endl;
 //	return;
 //}
-//
-//void cShip::ShootWeapons( void )
-//{
-//	std::cout << "cShip shoots:";
-//	this->pMyLASER->Shoot();
-//	return;
-//}
-//
+
+void cShip::ShootWeapons( void )
+{
+	std::cout << "cShip shoots:";
+	this->pMyLaser->Shoot();
+	return;
+}
+
 void cShip::SetPosition( glm::vec3 newPos )
 {
+	this->pMesh->position = newPos;
+	
 	//TODO: Set GO
 	return;
 }
 
-void cShip::SetVelocity( glm::vec3 newPos )
+void cShip::SetVelocity( glm::vec3 newVel )
 {
 	//TODO: Set GO
+	this->pMesh->vel = newVel;
+	return;
+}
+
+void cShip::SetRotation( glm::vec3 newRot )
+{
+	this->pMesh->rotation = newRot;
 	return;
 }
 

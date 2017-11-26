@@ -32,13 +32,21 @@ cCell::~cCell()
 //
 void cCell::SetPosition( glm::vec3 newPos )
 {
+	this->pMesh->position = newPos;
 	//TODO: Set GO
 	return;
 }
 
-void cCell::SetVelocity( glm::vec3 newPos )
+void cCell::SetVelocity( glm::vec3 newVel )
 {
+	this->pMesh->vel = newVel;
 	//TODO: Set GO
+	return;
+}
+
+void cCell::SetRotation( glm::vec3 newRot )
+{
+	this->pMesh->rotation = newRot;
 	return;
 }
 
