@@ -85,7 +85,7 @@ struct sMeshparameters		// for the Meshes' input file
 };
 
 // Forward declare the Functions
-void loadObjectsUsingFactory();
+extern void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vecObjects);
 void loadConfigFile( std::string fileName, sWindowConfig& wConfig );
 sGOparameters parseObjLine( std::ifstream &source );
 void loadObjectsFile( std::string fileName );
@@ -304,7 +304,7 @@ int main( void )
 	//loadObjectsFile( "objects.txt" );
 	
 	::g_pFactory = new cFactory();
-	loadObjectsUsingFactory();
+	loadObjectsUsingFactory(g_pFactory, g_vecObjects);
 
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 2 );
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 0 );

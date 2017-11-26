@@ -16,6 +16,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{f243418e-16fc-4d11-949d-086e84d49eb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PatternsFrameworkCode">
+      <UniqueIdentifier>{a5cf2093-40b7-4ed1-bef7-ddb74e6ce858}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TheMain.cpp">
@@ -57,14 +60,17 @@
     <ClCompile Include="cGameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cShip.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="cCell.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>PatternsFrameworkCode</Filter>
     </ClCompile>
     <ClCompile Include="cFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
+    <ClCompile Include="cShip.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
+    <ClCompile Include="PF_Utils.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
     </ClCompile>
     <ClCompile Include="cLaserGun.cpp">
       <Filter>Source Files</Filter>
@@ -101,20 +107,20 @@
     <ClInclude Include="cGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="iGameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cCell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cShip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="iMediator.h">
-      <Filter>Header Files</Filter>
+      <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
     <ClInclude Include="cFactory.h">
-      <Filter>Header Files</Filter>
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="cShip.h">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="iMediator.h">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="iGameObject.h">
+      <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
     <ClInclude Include="cLaserGun.h">
       <Filter>Header Files</Filter>

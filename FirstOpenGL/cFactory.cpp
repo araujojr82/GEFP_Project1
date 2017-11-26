@@ -42,6 +42,28 @@ iGameObject* cFactory::CreateObject( std::string objType )
 		pS->pMesh = pTempGO;
 		this->AssembleObject( pTheObject, objType );
 	}
+    else if (objType == "fighter2")
+    {
+        pTheObject = new cShip();
+        // ***********************************************
+        // Here we add the game object association
+        // (This would be a good case for making a G.O. Factory thing
+        cGameObject* pTempGO = new cGameObject();
+        pTempGO->scale = 2.0f;
+        pTempGO->diffuseColour = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
+        pTempGO->meshName = "fighter";
+        pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
+        pTempGO->bIsUpdatedInPhysics = true;
+        pTempGO->position.x = 2.0f;
+        pTempGO->position.y = 0.0f;
+        pTempGO->position.z = 2.0f;
+        //pTempGO->bIsWireFrame = true;
+        ::g_vecGameObjects.push_back(pTempGO);		// Fastest way to add
+                                                    // ***********************************************
+        cShip* pS = (cShip*)pTheObject;		//iShip* pTheShip
+        pS->pMesh = pTempGO;
+        this->AssembleObject(pTheObject, objType);
+    }
 	else if( objType == "cell" )
 	{
 		pTheObject = new cCell();
