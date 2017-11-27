@@ -29,6 +29,7 @@ public:
 	virtual void SetMediator( iMediator* pMediator );
 	
 	virtual void moveTo( glm::vec3 targetPosition );
+	virtual void update( void );
 
 	cGameObject* pMesh;
 

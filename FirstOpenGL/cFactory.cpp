@@ -124,10 +124,12 @@ void cFactory::UpdateAllObjects( double timestep )
 	{
 		iGameObject* pCurObj = this->vec_pObjects[index];
 
-		if( strncmp( pCurObj->getName().c_str(), "virus", 5 ) == 0 )
-		{ // It's a virus!
-			pCurObj->moveTo( FindClosestObjByType( "cell", pCurObj->GetPosition() )->GetPosition() );
-		}
+		//if( strncmp( pCurObj->getName().c_str(), "virus", 5 ) == 0 )
+		//{ // It's a virus!
+			//pCurObj->moveTo( FindClosestObjByType( "cell", pCurObj->GetPosition() )->GetPosition() );
+		//}
+		pCurObj->update();
+		
 
 		// For "fly around" (or anything tied with the physics),
 		//	you might want to use the physics updater
@@ -137,6 +139,24 @@ void cFactory::UpdateAllObjects( double timestep )
 	}//for ( int index = 0;
 
 	return;
+}
+
+std::vector<std::string> cFactory::SendMessage( std::string targetObj, std::vector<std::string> parameters )
+{
+	//iGameObject* pCurrentObj = this->FindObjByName( targetObj );
+	std::vector<std::string> vecResult;
+
+	if( parameters[1] == "FindClosestObjByType" )
+	{
+		this->FindClosestObjByType( parameters[2], 
+			glm::vec3( strtof( parameters[3].c_str(), 0 ),
+					   strtof( parameters[4].c_str(), 0 ),
+					   strtof( parameters[5].c_str(), 0 )
+					 ) 
+			);
+	}
+
+	return vecResult;
 }
 
 

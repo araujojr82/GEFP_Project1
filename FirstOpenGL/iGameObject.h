@@ -11,6 +11,9 @@
 
 #include "iMediator.h"
 #include "cGameObject.h"
+#include <vector>
+#include <iomanip>
+#include <sstream>
 
 class iGameObject
 {
@@ -23,6 +26,7 @@ public:
 	//virtual void FlyAround( void ) = 0;
 	//virtual void ShootWeapons( void ) = 0;
 	virtual void moveTo( glm::vec3 targetPosition ) = 0;
+	virtual void update( void ) = 0;
 
 	virtual void SetPosition( glm::vec3 newPos ) = 0;
 	virtual void SetVelocity( glm::vec3 newVel ) = 0;

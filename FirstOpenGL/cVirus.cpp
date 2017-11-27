@@ -105,3 +105,29 @@ void cVirus::moveTo( glm::vec3 targetPosition )
 
 	return;
 }
+
+void cVirus::update( void )
+{
+	std::stringstream stream;
+	std::vector<std::string> vecParam( 5 );
+	std::vector<std::string> vecResult;
+
+	vecParam.push_back( "FindClosestObjByType" );
+	vecParam.push_back( "cell" );
+
+	stream << std::fixed << std::setprecision( 2 ) << this->GetPosition().x;
+	vecParam.push_back( stream.str() );
+	stream << std::fixed << std::setprecision( 2 ) << this->GetPosition().y;
+	vecParam.push_back( stream.str() );
+	stream << std::fixed << std::setprecision( 2 ) << this->GetPosition().z;
+	vecParam.push_back( stream.str() );
+
+	vecResult = this->m_pTheMediator->SendMessage( this->getName(), vecParam );
+
+	this->moveTo( glm::vec3( strtof( vecResult[1].c_str(), 0 ),
+							 strtof( vecResult[2].c_str(), 0 ),
+							 strtof( vecResult[3].c_str(), 0 )
+			    ) );
+
+	return;
+}

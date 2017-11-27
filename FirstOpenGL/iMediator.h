@@ -4,6 +4,7 @@
 
 class iGameObject;	// Forward declare
 #include <string>
+#include <vector>
 
 				// Interface class
 class iMediator
@@ -17,6 +18,7 @@ public:
 	virtual iGameObject* FindObjByID( unsigned int uniqueID ) = 0;
 	virtual iGameObject* FindObjByName( std::string name ) = 0;
 	virtual iGameObject* FindClosestObjByType( std::string objType, glm::vec3 fromPos ) = 0;
+	virtual std::vector<std::string> SendMessage( std::string targetObj, std::vector<std::string> parameters ) = 0;
 
 };
 

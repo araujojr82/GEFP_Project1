@@ -75,5 +75,10 @@ void cCell::SetMediator( iMediator* pMediator )
 
 void cCell::moveTo( glm::vec3 targetPosition )
 {
+	return;
+}
 
+void cCell::update( void )
+{
+	return;
 }

@@ -76,5 +76,10 @@ void cShip::SetMediator( iMediator* pMediator )
 
 void cShip::moveTo( glm::vec3 targetPosition )
 {
+	return;
+}
 
+void cShip::update( void )
+{
+	return;
 }
