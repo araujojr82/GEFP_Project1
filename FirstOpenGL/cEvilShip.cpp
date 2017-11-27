@@ -1,20 +1,20 @@
-#include "cCell.h"
+#include "cEvilShip.h"
 #include <iostream>
 
-cCell::cCell()
+cEvilShip::cEvilShip()
 {
 	this->size = 1;
-	std::cout << "cCell::cCell() is called" << std::endl;
+	std::cout << "cShip::cShip() is called" << std::endl;
 	return;
 }
 
-cCell::~cCell()
+cEvilShip::~cEvilShip()
 {
-	std::cout << "cCell::~cCell() is called" << std::endl;
+	std::cout << "cShip::~cShip() is called" << std::endl;
 	return;
 }
 
-//void cShip::FlyAround( void )
+//void cEvilShip::FlyAround( void )
 //{
 //	std::cout
 //		<< "cShip::FlyAround() is called "
@@ -22,58 +22,59 @@ cCell::~cCell()
 //		<< std::endl;
 //	return;
 //}
-//
-//void cShip::ShootWeapons( void )
-//{
-//	std::cout << "cShip shoots:";
-//	this->pMyLASER->Shoot();
-//	return;
-//}
-//
-void cCell::SetPosition( glm::vec3 newPos )
+
+void cEvilShip::ShootWeapons( void )
+{
+	std::cout << "cShip shoots:";
+	//this->pMyLaser->Shoot();
+	return;
+}
+
+void cEvilShip::SetPosition( glm::vec3 newPos )
 {
 	this->pMesh->position = newPos;
+
 	//TODO: Set GO
 	return;
 }
 
-void cCell::SetVelocity( glm::vec3 newVel )
+void cEvilShip::SetVelocity( glm::vec3 newVel )
 {
-	this->pMesh->vel = newVel;
 	//TODO: Set GO
+	this->pMesh->vel = newVel;
 	return;
 }
 
-void cCell::SetRotation( glm::vec3 newRot )
+void cEvilShip::SetRotation( glm::vec3 newRot )
 {
 	this->pMesh->rotation = newRot;
 	return;
 }
 
-glm::vec3 cCell::GetPosition( void )
+glm::vec3 cEvilShip::GetPosition( void )
 {
 	return this->pMesh->position;
 }
 
-std::string cCell::getName( void )
+std::string cEvilShip::getName( void )
 {
 	return this->name;
 }
 
-void cCell::setName( std::string newName )
+void cEvilShip::setName( std::string newName )
 {
 	this->name = newName;
 	return;
 }
 
 // NOTE: I'm passing iMediator NOT the full factory
-void cCell::SetMediator( iMediator* pMediator )
+void cEvilShip::SetMediator( iMediator* pMediator )
 {
 	this->m_pTheMediator = pMediator;
 	return;
 }
 
-void cCell::moveTo( glm::vec3 targetPosition )
+void cEvilShip::moveTo( glm::vec3 targetPosition )
 {
 	float startX, startY, endX, endY;
 
@@ -92,20 +93,20 @@ void cCell::moveTo( glm::vec3 targetPosition )
 	return;
 }
 
-void cCell::update( void )
+void cEvilShip::update( void )
 {
 	glm::vec3 newPosition, myPosition;
 
 	myPosition = this->GetPosition();
 
-	if( myPosition.x > 12.0f ) myPosition.x = -12.0f;
-	if( myPosition.x < -12.0f ) myPosition.x = 12.0f;
-	this->SetPosition( myPosition );
+	if( myPosition.y >= 8.0f )
+	{
+		myPosition.y = -8.0f;
+		this->SetPosition( myPosition );
+	}
 
-	newPosition = myPosition;
-	newPosition += glm::vec3( generateRandomNumber( 0.0f, 12.0f ),
-							  0.0f, //generateRandomNumber( -6.0f, 6.0f ),
-							  0.0f );
+	newPosition = this->pMyThruster->Start( myPosition );
+
 	this->moveTo( newPosition );
 	return;
 }

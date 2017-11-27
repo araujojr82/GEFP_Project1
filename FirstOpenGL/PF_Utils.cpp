@@ -5,17 +5,19 @@ extern float generateRandomNumber( float min, float max );
 void loadObjectsUsingFactory(cFactory* pFactory, std::vector< iGameObject* > vecObjects)
 {
     iGameObject* pSpaceShip = pFactory->CreateObject("fighter");    
-    pSpaceShip->setName("PlayerShip");
+    pSpaceShip->setName("Player1Ship");
 	pSpaceShip->SetPosition( glm::vec3( 0.0f, 0.0f, 0.0f ) );
 	pSpaceShip->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.0f ) );
 	pSpaceShip->SetRotation( glm::vec3( 0.0f, 0.0f, 0.0f ) );
     vecObjects.push_back(pSpaceShip);
     
     // These lines create a new object just by recompiling this object. Uncoment to test!
-    //iGameObject* pSpaceShip2 = pFactory->CreateObject("fighter2");
-    //pSpaceShip->setName("PlayerShip2");
-    //pSpaceShip->SetVelocity(glm::vec3(0.0f, 0.0f, 0.1f));
-    //vecObjects.push_back(pSpaceShip2);
+    iGameObject* pSpaceShip2 = pFactory->CreateObject("fighter2");
+	pSpaceShip2->setName( "Player2Ship" );
+	pSpaceShip2->SetPosition( glm::vec3( 4.0f, -4.5f, 0.0f ) );
+	pSpaceShip2->SetVelocity( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	pSpaceShip2->SetRotation( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+	vecObjects.push_back( pSpaceShip2 );
 
 	for( int index = 0; index != 10; index++ )
 	{

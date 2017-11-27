@@ -100,6 +100,8 @@ void cVirus::moveTo( glm::vec3 targetPosition )
 	float directionX = ( endX - startX ) / distance;
 	float directionY = ( endY - startY ) / distance;
 
+	directionX *= 0.75f;
+	directionY *= 0.75f;
 
 	this->SetVelocity( glm::vec3(directionX, directionY, 0.0f) );
 
@@ -108,13 +110,19 @@ void cVirus::moveTo( glm::vec3 targetPosition )
 
 void cVirus::update( void )
 {
+	glm::vec3 thePosition = this->GetPosition();
+
+	thePosition = this->GetPosition();
+
+	if( thePosition.x > 11.0f ) thePosition.x = -11.0f;
+	if( thePosition.x < -11.0f ) thePosition.x = 11.0f;
+	this->SetPosition( thePosition );
+
 	std::vector<std::string> vecParam;
 	std::vector<std::string> vecResult;
 
 	vecParam.push_back( "FindClosestObjByType" );
 	vecParam.push_back( "cell" );
-
-    glm::vec3 thePosition = this->GetPosition();
 
 	vecParam.push_back( std::to_string(thePosition.x) );
     vecParam.push_back( std::to_string(thePosition.y) );

@@ -78,6 +78,12 @@
     <ClCompile Include="cVirus.cpp">
       <Filter>PatternsFrameworkCode</Filter>
     </ClCompile>
+    <ClCompile Include="cThruster.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
+    <ClCompile Include="cEvilShip.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cMesh.h">
@@ -129,6 +135,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cVirus.h">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="cThruster.h">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="cEvilShip.h">
       <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
   </ItemGroup>

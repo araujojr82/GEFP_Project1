@@ -1,23 +1,22 @@
-#ifndef _cCell_HG_
-#define _cShip_HG_
+#ifndef _cEvilShip_HG_
+#define _cEvilShip_HG_
 
 #include "iGameObject.h"
-
-extern float generateRandomNumber( float min, float max );
+#include "cThruster.h"
 
 class cGameObject;	// forward declare
 
-class cCell : public iGameObject
+class cEvilShip : public iGameObject
 {
 public:
-	cCell();
-	virtual ~cCell();		// Make this virtual, too
+	cEvilShip();
+	virtual ~cEvilShip();		// Make this virtual, too
 	int size;
 	float topSpeed;
 	float fuel;
 
 	//virtual void FlyAround( void );
-	//virtual void ShootWeapons( void );
+	virtual void ShootWeapons( void );
 
 	virtual void SetPosition( glm::vec3 newPos );
 	virtual void SetVelocity( glm::vec3 newVel );
@@ -29,9 +28,11 @@ public:
 
 	// NOTE: I'm passing iMediator NOT the full factory
 	virtual void SetMediator( iMediator* pMediator );
-	
+
 	virtual void moveTo( glm::vec3 targetPosition );
 	virtual void update( void );
+
+	cThruster* pMyThruster;
 
 	cGameObject* pMesh;
 

@@ -1,5 +1,6 @@
 #include "cFactory.h"
 #include "cShip.h"	
+#include "cEvilShip.h"	
 #include "cCell.h"
 #include "cVirus.h"
 
@@ -36,20 +37,17 @@ iGameObject* cFactory::CreateObject( std::string objType )
 	}
     else if (objType == "fighter2")
     {
-        pTheObject = new cShip();
+        pTheObject = new cEvilShip();
         cGameObject* pTempGO = new cGameObject();
         pTempGO->scale = 2.0f;
-        pTempGO->diffuseColour = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
+        pTempGO->diffuseColour = glm::vec4(0.3f, 0.3f, 0.4f, 1.0f);
         pTempGO->meshName = "fighter";
         pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
         pTempGO->bIsUpdatedInPhysics = true;
-        pTempGO->position.x = 2.0f;
-        pTempGO->position.y = 0.0f;
-        pTempGO->position.z = 2.0f;
         //pTempGO->bIsWireFrame = true;
         ::g_vecGameObjects.push_back(pTempGO);
-        cShip* pS = (cShip*)pTheObject;
-        pS->pMesh = pTempGO;
+        cEvilShip* pES = ( cEvilShip*)pTheObject;
+        pES->pMesh = pTempGO;
         this->AssembleObject(pTheObject, objType);
     }
 	else if( objType == "cell" )
@@ -102,10 +100,16 @@ void cFactory::AssembleObject( iGameObject* pTheObject, std::string objType )
 	if( objType == "fighter" )
 	{	// Assemble or build the specifics of that object
 		// It's got one Laser Gun
-		// ( (cShip*)pTheShip )->pMyLASER...
 
 		cShip* pShip = ( cShip* )pTheObject;	// not iShip
 		pShip->pMyLaser = new cLaserGun();
+	}
+	else if( objType == "fighter2" )
+	{	// Assemble or build the specifics of that object
+		// It's got one Thruster
+
+		cEvilShip* pEvilShip = ( cEvilShip* )pTheObject;	// not iShip
+		pEvilShip->pMyThruster = new cThruster();
 	}
 	return;
 }
@@ -194,6 +198,17 @@ iGameObject* cFactory::FindClosestObjByType( std::string objType, glm::vec3 from
 	iGameObject* nearestObj;
 	glm::vec3 targetPos;
 
+	//Set first cell to nearest to avoid null object
+	for( int index = 0; index != this->vec_pObjects.size(); index++ )
+	{
+		nearestObj = this->vec_pObjects[index];
+		if( strncmp( nearestObj->getName().c_str(), objType.c_str(), 4 ) == 0 )
+		{
+			exit;
+		}
+	}
+
+	//Find the actual nearest cell
 	for( int index = 0; index != this->vec_pObjects.size(); index++ )
 	{
 		iGameObject* pCurrentObj = this->vec_pObjects[index];
