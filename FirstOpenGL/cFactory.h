@@ -8,9 +8,16 @@
 
 #include <string>
 
+// Forward declare to the actual implementation class
+class cFactory_Imp;
+
 class cFactory : public iMediator
 {
 public:
+
+    // Singleton
+    static cFactory* getInstance(void);
+
 	// Note: the parameter is a GENERAL TYPE
 	// Suggestion: DON'T use an enum
 	// String, int, whatever, as long as it's general
@@ -32,9 +39,15 @@ public:
 	void UpdateAllObjects( double timestep );
 
 private:
-	// To make this a mediator, it needs to 'know' about 
-	//	all the objects, so this will keep pointers to them around
-	std::vector< iGameObject* > vec_pObjects;
+    
+    // Singleton
+    cFactory();    
+    static cFactory* m_pTheFactoryInstance;
+    
+    // Pointer to the actual implementation class
+    cFactory_Imp* pImp;
+
+    
 
 };
 

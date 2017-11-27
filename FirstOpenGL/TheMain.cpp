@@ -303,7 +303,7 @@ int main( void )
 	loadConfigFile( "config.txt", wConfig );
 	//loadObjectsFile( "objects.txt" );
 	
-	::g_pFactory = new cFactory();
+    ::g_pFactory = cFactory::getInstance();
 	loadObjectsUsingFactory(g_pFactory, g_vecObjects);
 
 	glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 2 );

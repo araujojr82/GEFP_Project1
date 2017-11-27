@@ -84,6 +84,9 @@
     <ClCompile Include="cEvilShip.cpp">
       <Filter>PatternsFrameworkCode</Filter>
     </ClCompile>
+    <ClCompile Include="cFactory_Imp.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cMesh.h">
@@ -141,6 +144,9 @@
       <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
     <ClInclude Include="cEvilShip.h">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="cFactory_Imp.h">
       <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
   </ItemGroup>
