@@ -123,9 +123,9 @@ void cVirus::update( void )
 
 	vecResult = this->m_pTheMediator->Mediate( this->getName(), vecParam );
 
-	this->moveTo( glm::vec3( strtof( vecResult[1].c_str(), 0 ),
-							 strtof( vecResult[2].c_str(), 0 ),
-							 strtof( vecResult[3].c_str(), 0 )
+	this->moveTo( glm::vec3( strtof( vecResult[0].c_str(), 0 ),
+							 strtof( vecResult[1].c_str(), 0 ),
+							 strtof( vecResult[2].c_str(), 0 )
 			    ) );
 
 	return;

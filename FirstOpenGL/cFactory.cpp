@@ -146,13 +146,13 @@ std::vector<std::string> cFactory::Mediate( std::string targetObj, std::vector<s
 	//iGameObject* pCurrentObj = this->FindObjByName( targetObj );
 	std::vector<std::string> vecResult;
 
-	if( parameters[1] == "FindClosestObjByType" )
+	if( parameters[0] == "FindClosestObjByType" )
 	{
         iGameObject* theGO = 
-		this->FindClosestObjByType( parameters[2], 
-			glm::vec3( strtof( parameters[3].c_str(), 0 ),
-					   strtof( parameters[4].c_str(), 0 ),
-					   strtof( parameters[5].c_str(), 0 )));
+		this->FindClosestObjByType( parameters[1], 
+			glm::vec3( strtof( parameters[2].c_str(), 0 ),
+					   strtof( parameters[3].c_str(), 0 ),
+					   strtof( parameters[4].c_str(), 0 )));
         
         glm::vec3 theGOPos = theGO->GetPosition();
         
