@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cBacteria.cpp" />
     <ClCompile Include="cCell.cpp" />
     <ClCompile Include="cEvilShip.cpp" />
     <ClCompile Include="cFactory.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cBacteria.h" />
     <ClInclude Include="cCell.h" />
     <ClInclude Include="cEvilShip.h" />
     <ClInclude Include="cFactory.h" />

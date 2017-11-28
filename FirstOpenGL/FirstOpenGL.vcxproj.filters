@@ -87,6 +87,9 @@
     <ClCompile Include="cFactory_Imp.cpp">
       <Filter>PatternsFrameworkCode</Filter>
     </ClCompile>
+    <ClCompile Include="cBacteria.cpp">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cMesh.h">
@@ -147,6 +150,9 @@
       <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
     <ClInclude Include="cFactory_Imp.h">
+      <Filter>PatternsFrameworkCode</Filter>
+    </ClInclude>
+    <ClInclude Include="cBacteria.h">
       <Filter>PatternsFrameworkCode</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,19 +1,19 @@
-#include "cVirus.h"
+#include "cBacteria.h"
 #include <iostream>
 
 extern float distanceSqEucl( float x1, float y1, float x2, float y2 );
 extern float direction( float x1, float y1, float x2, float y2, float x3, float y3 );
 
-cVirus::cVirus()
+cBacteria::cBacteria()
 {
 	this->size = 1;
-	std::cout << "cVirus::cVirus() is called" << std::endl;
+	std::cout << "cBacteria::cBacteria() is called" << std::endl;
 	return;
 }
 
-cVirus::~cVirus()
+cBacteria::~cBacteria()
 {
-	std::cout << "cVirus::~cVirus() is called" << std::endl;
+	std::cout << "cBacteria::~cBacteria() is called" << std::endl;
 	return;
 }
 
@@ -33,50 +33,50 @@ cVirus::~cVirus()
 //	return;
 //}
 //
-void cVirus::SetPosition( glm::vec3 newPos )
+void cBacteria::SetPosition( glm::vec3 newPos )
 {
 	this->pMesh->position = newPos;
 	//TODO: Set GO
 	return;
 }
 
-void cVirus::SetVelocity( glm::vec3 newVel )
+void cBacteria::SetVelocity( glm::vec3 newVel )
 {
 	this->pMesh->vel = newVel;
 	//TODO: Set GO
 	return;
 }
 
-void cVirus::SetRotation( glm::vec3 newRot )
+void cBacteria::SetRotation( glm::vec3 newRot )
 {
 	this->pMesh->rotation = newRot;
 	return;
 }
 
-glm::vec3 cVirus::GetPosition( void )
+glm::vec3 cBacteria::GetPosition( void )
 {
 	return this->pMesh->position;
 }
 
-std::string cVirus::getName( void )
+std::string cBacteria::getName( void )
 {
 	return this->name;
 }
 
-void cVirus::setName( std::string newName )
+void cBacteria::setName( std::string newName )
 {
 	this->name = newName;
 	return;
 }
 
 // NOTE: I'm passing iMediator NOT the full factory
-void cVirus::SetMediator( iMediator* pMediator )
+void cBacteria::SetMediator( iMediator* pMediator )
 {
 	this->m_pTheMediator = pMediator;
 	return;
 }
 
-void cVirus::moveTo( glm::vec3 targetPosition )
+void cBacteria::moveTo( glm::vec3 targetPosition )
 {
 	float startX, startY, endX, endY;
 
@@ -97,7 +97,7 @@ void cVirus::moveTo( glm::vec3 targetPosition )
 	return;
 }
 
-void cVirus::update( void )
+void cBacteria::update( void )
 {
 	glm::vec3 thePosition = this->GetPosition();
 
@@ -111,24 +111,19 @@ void cVirus::update( void )
 	std::vector<std::string> vecResult;
 
 	vecParam.push_back( "FindClosestObjByType" );
-	vecParam.push_back( "cell" );
+	vecParam.push_back( "Player" );
 
 	vecParam.push_back( std::to_string( thePosition.x ) );
 	vecParam.push_back( std::to_string( thePosition.y ) );
 	vecParam.push_back( std::to_string( thePosition.z ) );
 
 
-	vecResult = this->m_pTheMediator->Mediate( "virus", this->getName(), vecParam );
-
-	//this->moveTo( glm::vec3( strtof( vecResult[0].c_str(), 0 ),
-	//						 strtof( vecResult[1].c_str(), 0 ),
-	//						 strtof( vecResult[2].c_str(), 0 )
-	//		    ) );
+	vecResult = this->m_pTheMediator->Mediate( "bacteria", this->getName(), vecParam );
 
 	return;
 }
 
-void cVirus::attackCell( std::string theName, glm::vec3 targetPos )
+void cBacteria::attackShip( std::string theName, glm::vec3 targetPos )
 {
 	this->targetName = theName;
 	this->moveTo( targetPos );

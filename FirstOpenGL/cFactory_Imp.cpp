@@ -3,6 +3,7 @@
 #include "cEvilShip.h"
 #include "cCell.h"
 #include "cVirus.h"
+#include "cBacteria.h"
 
 #include "cGameObject.h"
 #include <vector>
@@ -79,6 +80,22 @@ iGameObject* cFactory_Imp::CreateObject(std::string objType)
 
 		::g_vecGameObjects.push_back( pTempGO );
 		cVirus* pS = ( cVirus* )pTheObject;
+		pS->pMesh = pTempGO;
+		this->AssembleObject( pTheObject, objType );
+	}
+	else if( objType == "bacteria" )
+	{
+		pTheObject = new cBacteria();
+		cGameObject* pTempGO = new cGameObject();
+		pTempGO->scale = 1.0f;
+		pTempGO->diffuseColour = glm::vec4( 0.0f, 1.0f, 1.0f, 1.0f );
+		pTempGO->meshName = "bacteria1";
+		pTempGO->typeOfObject = eTypeOfObject::UNKNOWN;
+		pTempGO->bIsUpdatedInPhysics = true;
+		//pTempGO->bIsWireFrame = true;
+
+		::g_vecGameObjects.push_back( pTempGO );
+		cBacteria* pS = ( cBacteria* )pTheObject;
 		pS->pMesh = pTempGO;
 		this->AssembleObject( pTheObject, objType );
 	}
@@ -170,6 +187,12 @@ std::vector<std::string> cFactory_Imp::Mediate( std::string objType, std::string
 			theVirus->attackCell( theGO->getName(), theGOPos );
 		}
 
+		if( objType == "bacteria" )
+		{
+			cBacteria* theBacteria = ( cBacteria* )pCurrentObj;
+			theBacteria->attackShip( theGO->getName(), theGOPos );
+		}
+
 		return vecResult;
 	}
 
@@ -204,7 +227,7 @@ iGameObject* cFactory_Imp::FindClosestObjByType(std::string objType, glm::vec3 f
 	iGameObject* nearestObj;
 	glm::vec3 targetPos;
 
-	//Set first cell to nearest to avoid null object
+	//Set first object to avoid null object
 	for( int index = 0; index != this->vec_pObjects.size(); index++ )
 	{
 		nearestObj = this->vec_pObjects[index];
