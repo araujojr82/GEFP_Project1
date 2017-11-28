@@ -37,9 +37,9 @@ void cFactory::UpdateAllObjects( double timestep )
     this->pImp->UpdateAllObjects(timestep);
 }
 
-std::vector<std::string> cFactory::Mediate( std::string targetObj, std::vector<std::string> parameters )
+std::vector<std::string> cFactory::Mediate( std::string objType, std::string targetObj, std::vector<std::string> parameters )
 {
-    return this->pImp->Mediate(targetObj, parameters);
+    return this->pImp->Mediate( objType, targetObj, parameters );
 }
 
 

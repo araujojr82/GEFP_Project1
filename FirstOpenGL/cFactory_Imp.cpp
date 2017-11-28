@@ -145,29 +145,35 @@ void cFactory_Imp::UpdateAllObjects(double timestep)
     return;
 }
 
-std::vector<std::string> cFactory_Imp::Mediate(std::string targetObj, std::vector<std::string> parameters)
+std::vector<std::string> cFactory_Imp::Mediate( std::string objType, std::string targetObj, std::vector<std::string> parameters)
 {
-    //iGameObject* pCurrentObj = this->FindObjByName( targetObj );
-    std::vector<std::string> vecResult;
+	iGameObject* pCurrentObj = this->FindObjByName( targetObj );
+	std::vector<std::string> vecResult;
 
-    if (parameters[0] == "FindClosestObjByType")
-    {
-        iGameObject* theGO =
-            this->FindClosestObjByType(parameters[1],
-                glm::vec3(strtof(parameters[2].c_str(), 0),
-                    strtof(parameters[3].c_str(), 0),
-                    strtof(parameters[4].c_str(), 0)));
+	if( parameters[0] == "FindClosestObjByType" )
+	{
+		iGameObject* theGO =
+			this->FindClosestObjByType( parameters[1],
+				glm::vec3( strtof( parameters[2].c_str(), 0 ),
+					strtof( parameters[3].c_str(), 0 ),
+					strtof( parameters[4].c_str(), 0 ) ) );
 
-        glm::vec3 theGOPos = theGO->GetPosition();
+		glm::vec3 theGOPos = theGO->GetPosition();
 
-        vecResult.push_back(std::to_string(theGOPos.x));
-        vecResult.push_back(std::to_string(theGOPos.y));
-        vecResult.push_back(std::to_string(theGOPos.z));
+		vecResult.push_back( std::to_string( theGOPos.x ) );
+		vecResult.push_back( std::to_string( theGOPos.y ) );
+		vecResult.push_back( std::to_string( theGOPos.z ) );
+		
+		if( objType == "virus" )
+		{
+			cVirus* theVirus = ( cVirus* )pCurrentObj;
+			theVirus->attackCell( theGO->getName(), theGOPos );
+		}
 
-        return vecResult;
-    }
+		return vecResult;
+	}
 
-    return parameters;
+	return parameters;
 }
 
 

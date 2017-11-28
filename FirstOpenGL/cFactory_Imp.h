@@ -28,7 +28,7 @@ public:
     virtual iGameObject* FindObjByID(unsigned int uniqueID);
     virtual iGameObject* FindObjByName(std::string name);
     virtual iGameObject* FindClosestObjByType(std::string objType, glm::vec3 fromPos);
-    virtual std::vector<std::string> Mediate(std::string targetObj, std::vector<std::string> parameters);
+    virtual std::vector<std::string> Mediate( std::string objType, std::string targetObj, std::vector<std::string> parameters);
 
     void UpdateAllObjects(double timestep);
 

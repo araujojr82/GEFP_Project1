@@ -34,10 +34,13 @@ public:
 	virtual void moveTo( glm::vec3 targetPosition );
 	virtual void update( void );
 
+	void attackCell( std::string targetName, glm::vec3 targetPos );
+
 	cGameObject* pMesh;
 
 private:
 	std::string name;
+	std::string targetName;
 
 	iMediator* m_pTheMediator;
 };

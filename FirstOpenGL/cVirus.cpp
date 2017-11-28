@@ -103,7 +103,7 @@ void cVirus::moveTo( glm::vec3 targetPosition )
 	directionX *= 0.75f;
 	directionY *= 0.75f;
 
-	this->SetVelocity( glm::vec3(directionX, directionY, 0.0f) );
+	this->SetVelocity( glm::vec3( directionX, directionY, 0.0f ) );
 
 	return;
 }
@@ -124,17 +124,25 @@ void cVirus::update( void )
 	vecParam.push_back( "FindClosestObjByType" );
 	vecParam.push_back( "cell" );
 
-	vecParam.push_back( std::to_string(thePosition.x) );
-    vecParam.push_back( std::to_string(thePosition.y) );
-    vecParam.push_back( std::to_string(thePosition.z) );
-	
+	vecParam.push_back( std::to_string( thePosition.x ) );
+	vecParam.push_back( std::to_string( thePosition.y ) );
+	vecParam.push_back( std::to_string( thePosition.z ) );
 
-	vecResult = this->m_pTheMediator->Mediate( this->getName(), vecParam );
 
-	this->moveTo( glm::vec3( strtof( vecResult[0].c_str(), 0 ),
-							 strtof( vecResult[1].c_str(), 0 ),
-							 strtof( vecResult[2].c_str(), 0 )
-			    ) );
+	vecResult = this->m_pTheMediator->Mediate( "virus", this->getName(), vecParam );
+
+	//this->moveTo( glm::vec3( strtof( vecResult[0].c_str(), 0 ),
+	//						 strtof( vecResult[1].c_str(), 0 ),
+	//						 strtof( vecResult[2].c_str(), 0 )
+	//		    ) );
+
+	return;
+}
+
+void cVirus::attackCell( std::string theName, glm::vec3 targetPos )
+{
+	this->targetName = theName;
+	this->moveTo( targetPos );
 
 	return;
 }
